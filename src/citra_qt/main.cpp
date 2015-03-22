@@ -158,7 +158,13 @@ GMainWindow::GMainWindow()
     std::string window_title = Common::StringFromFormat("Citra | %s-%s", Common::g_scm_branch, Common::g_scm_desc);
     setWindowTitle(window_title.c_str());
 
+	auto handle = render_window->windowHandle();
+
     show();
+
+	#if QT_VERSION >= QT_VERSION_CHECK(5, 0, 0)
+		connect(render_window->windowHandle(), SIGNAL(screenChanged(QScreen*)), render_window, SLOT(OnFramebufferSizeChanged()));
+	#endif
 
     QStringList args = QApplication::arguments();
     if (args.length() >= 2) {
