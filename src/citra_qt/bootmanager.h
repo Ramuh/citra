@@ -145,4 +145,7 @@ private:
 
     /// Device id of keyboard for use with KeyMap
     int keyboard_id;
+
+protected:
+    void showEvent(QShowEvent * event) override;
 };

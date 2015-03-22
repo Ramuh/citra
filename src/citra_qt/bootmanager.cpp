@@ -331,3 +331,11 @@ void GRenderWindow::OnClientAreaResized(unsigned width, unsigned height)
 void GRenderWindow::OnMinimalClientAreaChangeRequest(const std::pair<unsigned,unsigned>& minimal_size) {
     setMinimumSize(minimal_size.first, minimal_size.second);
 }
+
+void GRenderWindow::showEvent(QShowEvent * event) {
+    QWidget::showEvent(event);
+
+    #if QT_VERSION >= QT_VERSION_CHECK(5, 0, 0)
+        connect(this->windowHandle(), SIGNAL(screenChanged(QScreen*)), this, SLOT(OnFramebufferSizeChanged()));
+    #endif
+}
