@@ -132,7 +132,7 @@ public:
 public slots:
     void moveContext();  // overridden
 
-	void OnFramebufferSizeChanged();
+    void OnFramebufferSizeChanged();
 
 private:
     void OnMinimalClientAreaChangeRequest(const std::pair<unsigned,unsigned>& minimal_size) override;

@@ -160,9 +160,9 @@ GMainWindow::GMainWindow()
 
     show();
 
-	#if QT_VERSION >= QT_VERSION_CHECK(5, 0, 0)
-		connect(render_window->windowHandle(), SIGNAL(screenChanged(QScreen*)), render_window, SLOT(OnFramebufferSizeChanged()));
-	#endif
+    #if QT_VERSION >= QT_VERSION_CHECK(5, 0, 0)
+        connect(render_window->windowHandle(), SIGNAL(screenChanged(QScreen*)), render_window, SLOT(OnFramebufferSizeChanged()));
+    #endif
 
     QStringList args = QApplication::arguments();
     if (args.length() >= 2) {
