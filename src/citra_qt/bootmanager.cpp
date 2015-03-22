@@ -168,6 +168,10 @@ GRenderWindow::GRenderWindow(QWidget* parent) : QWidget(parent), emu_thread(this
     NotifyClientAreaSizeChanged(std::pair<unsigned,unsigned>(child->width(), child->height()));
 
     BackupGeometry();
+
+#if QT_VERSION >= QT_VERSION_CHECK(5, 0, 0)
+    connect(this->windowHandle(), SIGNAL(screenChanged(QScreen*)), this, SLOT(OnFramebufferSizeChanged()));
+#endif
 }
 
 void GRenderWindow::moveContext()

@@ -128,11 +128,11 @@ public:
     void ReloadSetKeymaps() override;
 
     void OnClientAreaResized(unsigned width, unsigned height);
-	
+
+    void OnFramebufferSizeChanged();
+
 public slots:
     void moveContext();  // overridden
-
-	void OnFramebufferSizeChanged();
 
 private:
     void OnMinimalClientAreaChangeRequest(const std::pair<unsigned,unsigned>& minimal_size) override;
